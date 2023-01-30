@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
                 val permissionGranted = it.value
 
                 if(permissionGranted){
-                    Toast.makeText(this,"permission granted now you can read the storage files" , Toast.LENGTH_LONG).show()
 
                     val pickIntent = Intent(Intent.ACTION_PICK , MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                     openGallaryLauncher.launch(pickIntent)
@@ -86,6 +85,12 @@ class MainActivity : AppCompatActivity() {
         ib_brush.setOnClickListener { 
             showBrushSizeChooserDialog()
         }
+
+        val ib_undo :ImageButton = findViewById(R.id.ib_undo)
+        ib_undo.setOnClickListener {
+            drawingView?.onClickUndo()
+        }
+
         val ib_gallary :ImageButton = findViewById(R.id.ib_gallary)
         ib_gallary.setOnClickListener {
             requestStoragePermission()
